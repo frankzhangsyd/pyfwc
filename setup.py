@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Note: To use the 'upload' functionality of this file, you must:
-#   $ pipenv install twine --dev
-
 import io
 import os
 import sys
@@ -15,10 +12,10 @@ from setuptools import find_packages, setup, Command
 NAME = 'pyfwc'
 DESCRIPTION = 'Python wrapper for Australian Fair Work Commission API'
 URL = 'https://github.com/frankzhangsyd/pyfwc'
-EMAIL = 'frank@dingrui.com'
+EMAIL = 'frank.dingrui@gmail.com'
 AUTHOR = 'Frank Zhang'
 REQUIRES_PYTHON = '>=3.7.4'
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
