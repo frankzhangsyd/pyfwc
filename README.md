@@ -35,19 +35,7 @@ fwc.get_awards(name='mining')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -98,26 +86,14 @@ Retrieve specific award using an award identifier
 
 
 ```python
-fwc.get_award(id_or_code='MA000001')
+fwc.get_award(id_or_code='MA000001').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -170,54 +146,6 @@ fwc.get_award(id_or_code='MA000001')
       <td>2019-10-23T11:12:07+00:00</td>
       <td>2019</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>0</td>
-      <td>1</td>
-      <td>MA000001</td>
-      <td>Black Coal Mining Industry Award 2020</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>3</td>
-      <td>2019-10-11T13:06:14+00:00</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0</td>
-      <td>1</td>
-      <td>MA000001</td>
-      <td>Black Coal Mining Industry Award 2020</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>3</td>
-      <td>2019-10-10T11:13:00+00:00</td>
-      <td>2017</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0</td>
-      <td>1</td>
-      <td>MA000001</td>
-      <td>Black Coal Mining Industry Award 2020</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>3</td>
-      <td>2019-10-04T17:54:28+00:00</td>
-      <td>2016</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0</td>
-      <td>1</td>
-      <td>MA000001</td>
-      <td>Black Coal Mining Industry Award 2020</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>3</td>
-      <td>2019-10-01T14:58:42+00:00</td>
-      <td>2015</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -238,19 +166,7 @@ fwc.get_classification(id_or_code='MA000002',classification_fixed_id='98')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -299,26 +215,14 @@ Retrieve all the pay-rates for an award using an award identifier.
 
 
 ```python
-fwc.get_payrates(id_or_code='MA000001').head()
+fwc.get_payrates(id_or_code='MA000001').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -399,44 +303,6 @@ fwc.get_payrates(id_or_code='MA000001').head()
       <td>2021</td>
       <td>2022-01-13T16:41:36+00:00</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>108968</td>
-      <td>None</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>None</td>
-      <td>None</td>
-      <td>0.0</td>
-      <td>Apprentices other than adult apprentices</td>
-      <td>Apprentices other than adult apprentices - % o...</td>
-      <td>NaN</td>
-      <td>None</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2021</td>
-      <td>2022-01-13T16:41:36+00:00</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>90791</td>
-      <td>BR102464</td>
-      <td>Weekly</td>
-      <td>714.4</td>
-      <td>None</td>
-      <td>None</td>
-      <td>0.0</td>
-      <td>Adult apprentices</td>
-      <td>1st year of apprenticeship - 80</td>
-      <td>1.0</td>
-      <td>AA</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>2</td>
-      <td>2021</td>
-      <td>2022-03-03T18:52:51+00:00</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -447,26 +313,14 @@ Retrieve award classification information using an award identifier.
 
 
 ```python
-fwc.get_classifications(id_or_code='MA000012').head()
+fwc.get_classifications(id_or_code='MA000012').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -539,40 +393,6 @@ fwc.get_classifications(id_or_code='MA000012').head()
       <td>2022-03-03T18:52:51+00:00</td>
       <td>2021</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>554</td>
-      <td>31</td>
-      <td>16.1</td>
-      <td>Pharmacy employees</td>
-      <td>None</td>
-      <td>Pharmacy student—2nd year of course</td>
-      <td>2.0</td>
-      <td>550.0</td>
-      <td>551.0</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2022-03-03T18:52:51+00:00</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>555</td>
-      <td>31</td>
-      <td>16.1</td>
-      <td>Pharmacy employees</td>
-      <td>None</td>
-      <td>Pharmacy student—3rd year of course</td>
-      <td>3.0</td>
-      <td>551.0</td>
-      <td>552.0</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2022-03-03T18:52:51+00:00</td>
-      <td>2021</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -590,19 +410,7 @@ fwc.get_current_payrate(id_or_code='MA000012',classification_fixed_id='549')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -665,19 +473,7 @@ fwc.get_expense_allowance(id_or_code='MA000012',expense_allowance_fixed_id='49')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -730,26 +526,14 @@ Retrieve award expense-related allowance information using an award identifier.
 
 
 ```python
-fwc.get_expense_allowances(id_or_code='MA000012').head()
+fwc.get_expense_allowances(id_or_code='MA000012').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -830,44 +614,6 @@ fwc.get_expense_allowances(id_or_code='MA000012').head()
       <td>2022-02-15T15:41:38+00:00</td>
       <td>2021</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>51</td>
-      <td>1865</td>
-      <td>19.5(b)(i)</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Special clothing allowance—full-time employee</td>
-      <td>False</td>
-      <td>6.25</td>
-      <td>per week</td>
-      <td>2008</td>
-      <td>None</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2022-02-15T15:41:38+00:00</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52</td>
-      <td>1866</td>
-      <td>19.5(b)(ii)</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Special clothing allowance—part-time or casual...</td>
-      <td>False</td>
-      <td>1.25</td>
-      <td>per shift</td>
-      <td>2008</td>
-      <td>None</td>
-      <td>2010-01-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2022-02-15T15:41:38+00:00</td>
-      <td>2021</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -881,26 +627,14 @@ Retrieve all the penalties for an award using an award identifier.
 
 
 ```python
-fwc.get_penalties(id_or_code='MA000012').head()
+fwc.get_penalties(id_or_code='MA000012').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -981,44 +715,6 @@ fwc.get_penalties(id_or_code='MA000012').head()
       <td>2021</td>
       <td>2022-01-21T13:24:14+00:00</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>2133</td>
-      <td>21735</td>
-      <td>Full-time and part-time adult employees—penalt...</td>
-      <td>1</td>
-      <td>None</td>
-      <td>Saturday - Between 9.00 pm and midnight</td>
-      <td>175.0</td>
-      <td>AD</td>
-      <td>39.08</td>
-      <td>False</td>
-      <td>BR90103</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2021</td>
-      <td>2022-01-21T13:24:14+00:00</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2147</td>
-      <td>21738</td>
-      <td>Casual adult employees—penalty rates for Satur...</td>
-      <td>1</td>
-      <td>None</td>
-      <td>Saturday - Between 6.00 pm and 9.00 pm</td>
-      <td>175.0</td>
-      <td>AD</td>
-      <td>39.08</td>
-      <td>False</td>
-      <td>BR90099</td>
-      <td>2021-07-01T00:00:00+00:00</td>
-      <td>None</td>
-      <td>1</td>
-      <td>2021</td>
-      <td>2022-01-21T13:29:09+00:00</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -1039,19 +735,7 @@ fwc.get_wage_allowance(id_or_code='MA000012',wage_allowance_fixed_id='191')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1106,26 +790,14 @@ Retrieve award wage-related allowance information using an award identifier.
 
 
 ```python
-fwc.get_wage_allowances(id_or_code='MA000012').head()
+fwc.get_wage_allowances(id_or_code='MA000012').head(3)
 ```
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1210,48 +882,12 @@ fwc.get_wage_allowances(id_or_code='MA000012').head()
       <td>2022-03-03T09:01:31+00:00</td>
       <td>2020</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>12011</td>
-      <td>23000</td>
-      <td>19.2</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Home medicine reviews or residential medicatio...</td>
-      <td>False</td>
-      <td>0.00</td>
-      <td>Percent</td>
-      <td>None</td>
-      <td>106.40</td>
-      <td>per week</td>
-      <td>2020-07-01T00:00:00+00:00</td>
-      <td>2021-06-30T00:00:00+00:00</td>
-      <td>NaN</td>
-      <td>2022-03-03T09:01:31+00:00</td>
-      <td>2020</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>191</td>
-      <td>788</td>
-      <td>19.8</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Broken Hill allowance</td>
-      <td>False</td>
-      <td>4.28</td>
-      <td>Percent</td>
-      <td>None</td>
-      <td>36.92</td>
-      <td>per week</td>
-      <td>2019-07-01T00:00:00+00:00</td>
-      <td>2020-06-30T00:00:00+00:00</td>
-      <td>NaN</td>
-      <td>2022-03-03T09:01:31+00:00</td>
-      <td>2019</td>
-    </tr>
   </tbody>
 </table>
 </div>
 
 
+
+Contribution
+-----
+Contributors and committers are are welcome.
