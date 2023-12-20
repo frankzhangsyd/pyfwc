@@ -49,7 +49,7 @@ class FWCAPI():
         'Cache-Control': 'no-cache',
         'Ocp-Apim-Subscription-Key': self.key,
         }
-        self.baseurl = "https://uatapi.fwc.gov.au/api/v1/awards"
+        self.baseurl = "https://api.fwc.gov.au/api/v1/awards"
 
     def get_awards(self,name,award_operative_from=None,award_operative_to=None):
         """This API is designed to retrieve a list of modern awards to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=GetAwards

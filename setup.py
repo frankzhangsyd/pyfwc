@@ -15,7 +15,7 @@ URL = 'https://github.com/frankzhangsyd/pyfwc'
 EMAIL = 'frank.dingrui@gmail.com'
 AUTHOR = 'Frank Zhang'
 REQUIRES_PYTHON = '>=3.7.4'
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
