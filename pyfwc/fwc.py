@@ -5,35 +5,30 @@ import time
 class FWCAPI():
 
     @staticmethod
-    def __get_result(query_url,hdr,payload):
+    def __get_results(query_url,hdr,payload):
         response = requests.get(url=query_url,headers=hdr,params=payload)
         response_json = response.json()        
         if response.status_code != 200:
             raise ValueError(response_json['errors'][0]['detail'])
-        result_df=pd.DataFrame.from_records([response_json['result']])
-        return result_df
+        
+        if 'page_count' not in response_json['_meta']:
+            result_df=pd.DataFrame.from_records([response_json['result']])
+        else:
+            page_count = response_json['_meta']['page_count']
+            result_list=[]
+            result_list.append(pd.DataFrame.from_dict(response_json['results']))
 
-    @staticmethod
-    def __get_all_results(query_url,hdr,payload):
-        response = requests.get(url=query_url,headers=hdr,params=payload)
-        response_json = response.json()        
-        if response.status_code != 200:
-            raise ValueError(response_json['errors'][0]['detail'])
-        page_count = response_json['_meta']['page_count']
-        result_list=[]
-        result_list.append(pd.DataFrame.from_dict(response_json['results']))
-
-        # if # of page >=2, get all pages results
-        if(page_count>1):
-            for idx in range(2,page_count+1):
-                page_paras = {
-                    'page' : idx,
-                    'limit': 100
-                        }
-                page_response = requests.get(url=query_url,headers=hdr,params=page_paras).json()
-                result_list.append(pd.DataFrame.from_dict(page_response['results']))
-                time.sleep(1)
-        result_df = pd.concat(result_list)
+            # if # of page >=2, get all pages results
+            if(page_count>1):
+                for idx in range(2,page_count+1):
+                    page_paras = {
+                        'page' : idx,
+                        'limit': 100
+                            }
+                    page_response = requests.get(url=query_url,headers=hdr,params=page_paras).json()
+                    result_list.append(pd.DataFrame.from_dict(page_response['results']))
+                    time.sleep(1)
+            result_df = pd.concat(result_list)            
         return result_df
 
     def __init__(self,subscription_key):
@@ -78,7 +73,7 @@ class FWCAPI():
         payload['award_operative_to']=award_operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)
+        return self.__get_results(query_url,self.hdr,payload)
 
     def get_award(self,id_or_code,award_operative_from=None,award_operative_to=None):
         """This API is designed to retrieve a modern award using the "award_fixed_id" or the award "code" to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=AwardsIdentification
@@ -107,7 +102,7 @@ class FWCAPI():
         payload['award_operative_to']=award_operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)        
+        return self.__get_results(query_url,self.hdr,payload)        
 
     def get_classification(self,id_or_code,classification_fixed_id):
         """This API is designed to retrieve a current individual classification for a specific award using a fixed identifier. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=IndividualClassification
@@ -132,7 +127,7 @@ class FWCAPI():
         payload = {}
         payload['limit']=100
 
-        return self.__get_result(query_url,self.hdr,payload)   
+        return self.__get_results(query_url,self.hdr,payload)   
 
     def get_payrates(self,id_or_code,classification_level=None,classification_fixed_id=None,employee_rate_type_code=None,operative_from=None,operative_to=None):
         """This API is designed to retrieve the pay-rates for a given award to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=GetPayRates
@@ -170,7 +165,7 @@ class FWCAPI():
         payload['operative_to']=operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)       
+        return self.__get_results(query_url,self.hdr,payload)       
 
     def get_classifications(self,id_or_code,classification_level=None,classification_fixed_id=None,operative_from=None,operative_to=None):
         """This API is designed to retrieve award classification information using the "award_ fixed_ id" or the award "code" to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=AwardClassification
@@ -205,7 +200,7 @@ class FWCAPI():
         payload['operative_to']=operative_to        
         payload['limit']=100
         
-        return self.__get_all_results(query_url,self.hdr,payload)    
+        return self.__get_results(query_url,self.hdr,payload)    
 
 
         
@@ -233,7 +228,7 @@ class FWCAPI():
         payload = {}
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)
+        return self.__get_results(query_url,self.hdr,payload)
 
     def get_expense_allowance(self,id_or_code,expense_allowance_fixed_id):
         """This API is designed to retrieve a current individual expense-related allowance for a specific award using a fixed identifier. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=IndividualExpenseAllowance
@@ -258,7 +253,7 @@ class FWCAPI():
         payload = {}
         payload['limit']=100
 
-        return self.__get_result(query_url,self.hdr,payload)        
+        return self.__get_results(query_url,self.hdr,payload)        
 
     def get_expense_allowances(self,id_or_code,allowance_type_code=None,is_all_purpose=None,operative_from=None,operative_to=None):
         """This API is designed to retrieve the expense-related allowance for a specific award using the "award_fixed_id" or the award "code" to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=ExpenseAllowances
@@ -293,7 +288,7 @@ class FWCAPI():
         payload['operative_to']=operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)        
+        return self.__get_results(query_url,self.hdr,payload)        
 
 
     def get_penalties(self,id_or_code,penalty_fixed_id=None,classification_level=None,penalty_code=None,employee_rate_type_code=None,base_pay_rate_Id=None,operative_from=None,operative_to=None):
@@ -338,7 +333,7 @@ class FWCAPI():
         payload['operative_to']=operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)        
+        return self.__get_results(query_url,self.hdr,payload)        
 
     def get_wage_allowance(self,id_or_code,wage_allowance_fixed_id):
         """This API is designed to retrieve a current individual wage-related allowance for a specific award using a fixed identifier. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=IndividualWageAllowance
@@ -363,7 +358,7 @@ class FWCAPI():
         payload = {}
         payload['limit']=100
 
-        return self.__get_result(query_url,self.hdr,payload)        
+        return self.__get_results(query_url,self.hdr,payload)        
 
     def get_wage_allowances(self,id_or_code,allowance_type_code=None,is_all_purpose=None,operative_from=None,operative_to=None):
         """This API is designed to retrieve the wage-related allowance for a specific award using the "award_fixed_id" or the award "code" to support payroll business processes. https://uatdeveloper.fwc.gov.au/api-details#api=fwc-maapi-v1&operation=WageAllowanceModel
@@ -398,4 +393,4 @@ class FWCAPI():
         payload['operative_to']=operative_to
         payload['limit']=100
 
-        return self.__get_all_results(query_url,self.hdr,payload)    
+        return self.__get_results(query_url,self.hdr,payload)    
