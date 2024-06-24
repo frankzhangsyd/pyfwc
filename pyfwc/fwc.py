@@ -54,7 +54,7 @@ class FWCAPI():
                 self.baseurl = url
                 break
             else:
-                error_msg.append(f'Failed to access {url}, error message: {test_conn.json()['errors'][0]['detail']}')
+                error_msg.append(f'Failed to access {url}, error message: {test_conn.json()["errors"][0]["detail"]}')
         if self.baseurl is None:
             raise ValueError('\n'.join(error_msg))
             
