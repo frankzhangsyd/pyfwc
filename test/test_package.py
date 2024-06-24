@@ -4,6 +4,8 @@ from pyfwc.fwc import FWCAPI
 
 @pytest.fixture()
 def fwc(API_KEY):
+    print(API_KEY)
+    print(len(API_KEY))
     fwc = FWCAPI(API_KEY)
     return fwc
 
