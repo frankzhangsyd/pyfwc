@@ -3,10 +3,8 @@ import pandas as pd
 from pyfwc.fwc import FWCAPI
 
 @pytest.fixture()
-def fwc(API_KEY):
-    print(API_KEY)
-    print(len(API_KEY))
-    fwc = FWCAPI(API_KEY)
+def fwc():
+    fwc = FWCAPI("ba0d41bfb2374ac091d5f52f6be6d313")
     return fwc
 
 
